@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <meta-data android:name="com.kakao.sdk.AppKey" android:value="5a3efee24f6a1636f7627c9203860f99"/>
+
 
     <application
         android:allowBackup="true"
