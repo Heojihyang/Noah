@@ -21,7 +21,7 @@ class NotificationsFragment : Fragment() {
     lateinit var notifyAdapter : NotifyAdapter
     lateinit var notifyRecyclerView: RecyclerView
 
-    private var comment : String? = null
+    //private var comment : String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +31,7 @@ class NotificationsFragment : Fragment() {
         val notificationsViewModel =
             ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
-        comment=arguments?.getString("comments")
+        var comment=arguments?.getString("comments")
         Log.d("_comment : ", comment.toString())
         dataList.add(NotifyModel(comment.toString()))
         Log.d("Notify comment: dataList", dataList.toString())

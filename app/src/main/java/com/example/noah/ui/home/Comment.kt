@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noah.DBManager
@@ -113,6 +114,7 @@ class Comment : Fragment() {
 
                     var bundle:Bundle=Bundle()
                     bundle.putString("comments",strComments)
+                    //findNavController().navigate(R.id.navigation_notifications,bundle)
                     Log.d("strComments의 값 : ", strComments)
 
                    //notifyComment.getComment(strComments)
