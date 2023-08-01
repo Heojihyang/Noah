@@ -5,6 +5,7 @@ import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,9 @@ class DashboardFragment : Fragment() {
         val mapView = MapView(context)
         binding.mapView.addView(mapView)
 
+//        arguments?.let { address=it.getString("Address") }
+        address=arguments?.getString("Address")
+        Log.d("getAddress", "Address: $address")
 //        val intentMap = Intent(this.context, SetAddress::class.java)
 //        getAdressResult.launch(intentMap)
 
@@ -84,11 +88,13 @@ class DashboardFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
+        Log.d("getAddress", "onActivityResult: start")
         // 돌려받은 resultCode가 정상인지 체크
         if(resultCode == Activity.RESULT_OK){
-            val message = data?.getStringExtra("address")
+            Log.d("getAddress", "resultCode: $resultCode")
+            val message = data?.getStringExtra("Address")
             address=message
+            Log.d("getAddress", "getAddress: $address")
         }
     }
 

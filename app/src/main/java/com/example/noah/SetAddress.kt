@@ -8,6 +8,7 @@ import android.widget.EditText
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.example.noah.ui.dashboard.DashboardFragment
 
 
 class SetAddress : AppCompatActivity() {
@@ -19,15 +20,41 @@ class SetAddress : AppCompatActivity() {
         setContentView(R.layout.activity_set_address)
 
         mEtAddress = findViewById(R.id.et_address)
+        button_setAddress = findViewById(R.id.button_set)
 
         //block touch
         mEtAddress.isFocusable ?: false
         mEtAddress.setOnClickListener {
             //주소 검색 웹뷰 화면으로 이동
-            val intent = Intent(this@SetAddress, SearchRoadActivity::class.java)
-            getSearchResult.launch(intent)
+            val intentSear = Intent(this@SetAddress, SearchRoadActivity::class.java)
+            getSearchResult.launch(intentSear)
         }
 
+        // 확인 버튼 누르면 마이프로필 화면으로 다시 돌아가기
+        button_setAddress.setOnClickListener() {
+            //bundle에 넣기
+            var bundle=Bundle()
+            bundle.putString("Address",mEtAddress.text.toString())
+            Log.d("getAddress", "Address_pre: ${mEtAddress.text}")
+
+            val fragmentDash=DashboardFragment()
+            fragmentDash.arguments=bundle
+
+            val transaction=supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.map_view, fragmentDash)
+            transaction.commit()
+
+//            val intentMap = Intent(this, DashboardFragment::class.java)
+//            intentMap.putExtra("address", mEtAddress.text)
+//            setResult(Activity.RESULT_OK, intentMap)
+//            finish()
+//            startActivity(intentMap)
+
+            //마이프로필로 다시 이동
+            val intentProf = Intent(this, MyProfile::class.java)
+            startActivity(intentProf)
+            getSearchResult.launch(intentProf)
+        }
     }
 
     private val getSearchResult = registerForActivityResult<Intent, ActivityResult>(
@@ -38,13 +65,6 @@ class SetAddress : AppCompatActivity() {
             if (result.data != null) {
                 val data = result.data!!.getStringExtra("data")
                 mEtAddress.setText(data)
-
-                val intentMap = Intent()
-                intentMap.putExtra("address", data)
-                Log.d("getAddress", "getAddress: $data")
-//                setResult(Activity.RESULT_OK, intentMap)
-//                finish()
-//                startActivity(intentMap)
             }
         }
     }

@@ -9,142 +9,110 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="30dp"
         android:orientation="vertical">
+
+        <!-- 주소지 검색창 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:background="@drawable/rounded_box_gray2">
+
+            <EditText
+                android:id="@+id/et_address"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="15sp"
+                android:gravity="center_vertical|start"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:hint="더블클릭하여 검색"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/search_button"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:src="@drawable/search"/>
+
+        </LinearLayout>
+
+        <!--주소지 검색 예시 txt -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textSize="12sp"
+            android:textColor="@color/gray3"
+            android:textStyle="bold"
+            android:text="이렇게 검색해 보세요" />
+
+        <!--도로명주소-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="12sp"
+            android:textColor="@color/gray2"
+            android:text="도로명 건물번호"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="주소입력"
-            android:textSize="20sp"
-            android:textColor="@color/black"/>
+            android:layout_marginTop="3dp"
+            android:textSize="12sp"
+            android:textColor="@color/green"
+            android:text="예시) 서울특별시 노원구 화랑로 621"/>
 
-        <EditText
-            android:id="@+id/et_address"
-            android:layout_width="match_parent"
+        <!-- 지번 주소 -->
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="주소를 입력해주세요"
-            android:textSize="20sp" />
-    </LinearLayout>
+            android:layout_marginTop="10dp"
+            android:textSize="12sp"
+            android:textColor="@color/gray2"
+            android:text="지역명(동/리) + 번지 " />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textSize="12sp"
+            android:textColor="@color/green"
+            android:text="예시) 서울특별시 노원구 공릉동 113" />
+        <!--건물주소 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="12sp"
+            android:textColor="@color/gray2"
+            android:text="지역명(동/리) + 건물명(아파트 명) " />
 
-    <!-- 지도 아래 공간 : white -->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_weight="1"-->
-<!--        android:padding="30dp"-->
-<!--        android:orientation="vertical">-->
-
-<!--        &lt;!&ndash; 주소지 검색창 &ndash;&gt;-->
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="60dp"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:gravity="center_vertical"-->
-<!--            android:paddingHorizontal="15dp"-->
-<!--            android:background="@drawable/rounded_box_gray1">-->
-
-<!--            &lt;!&ndash; 주소지 검색입력창 &ndash;&gt;-->
-<!--            <EditText-->
-<!--                android:id="@+id/getAddress"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:textColor="@color/gray2"-->
-<!--                android:textSize="15sp"-->
-<!--                android:gravity="center_vertical|start"-->
-<!--                android:hint="건물명, 도로명 또는 지번으로 검색"-->
-<!--                android:layout_weight="1"/>-->
-
-<!--            &lt;!&ndash; 검색 버튼 &ndash;&gt;-->
-<!--            <ImageView-->
-<!--                android:id="@+id/search_button"-->
-<!--                android:layout_width="20dp"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_gravity="end"-->
-<!--                android:src="@drawable/search"/>-->
-
-
-<!--        </LinearLayout>-->
-
-<!--        &lt;!&ndash; 주소지 검색 예시 txt &ndash;&gt;-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:textSize="12sp"-->
-<!--            android:textColor="@color/gray3"-->
-<!--            android:textStyle="bold"-->
-<!--            android:text="이렇게 검색해 보세요" />-->
-
-<!--        &lt;!&ndash; 도로명주소 &ndash;&gt;-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:textSize="12sp"-->
-<!--            android:textColor="@color/gray2"-->
-<!--            android:text="도로명 건물번호"-->
-<!--            />-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="3dp"-->
-<!--            android:textSize="12sp"-->
-<!--            android:textColor="@color/green"-->
-<!--            android:text="예시) 서울특별시 노원구 화랑로 621"-->
-<!--            />-->
-
-<!--        &lt;!&ndash; 지번 주소 &ndash;&gt;-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:textSize="12sp"-->
-<!--            android:textColor="@color/gray2"-->
-<!--            android:text="지역명(동/리) + 번지 "-->
-<!--            />-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="3dp"-->
-<!--            android:textSize="12sp"-->
-<!--            android:textColor="@color/green"-->
-<!--            android:text="예시) 서울특별시 노원구 공릉동 113"-->
-<!--            />-->
-
-<!--        &lt;!&ndash; 건물주소 &ndash;&gt;-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:textSize="12sp"-->
-<!--            android:textColor="@color/gray2"-->
-<!--            android:text="지역명(동/리) + 건물명(아파트 명) "-->
-<!--            />-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="3dp"-->
-<!--            android:textSize="12sp"-->
-<!--            android:textColor="@color/green"-->
-<!--            android:text="예시) 공릉동 서울여자대학교 "-->
-<!--            />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textSize="12sp"
+            android:textColor="@color/green"
+            android:text="예시) 공릉동 서울여자대학교 " />
 
     </LinearLayout>
 
-    <!-- 확인 버튼 : yellow -->
-<!--    <Button-->
-<!--        android:id="@+id/button_setAddress"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginHorizontal="100dp"-->
-<!--        android:layout_marginBottom="15dp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:background="@drawable/button_yellow"-->
-<!--        android:text="확인" />-->
+    <Button
+        android:id="@+id/button_set"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginBottom="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:background="@drawable/button_yellow"
+        android:text="확인" />
 
-<!--</LinearLayout>-->
+</LinearLayout>
