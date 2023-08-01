@@ -114,7 +114,7 @@ class Comment : Fragment() {
 
                     var bundle:Bundle=Bundle()
                     bundle.putString("comments",strComments)
-                    //findNavController().navigate(R.id.navigation_notifications,bundle)
+                    findNavController().navigate(R.id.navigation_notifications,bundle)
                     Log.d("strComments의 값 : ", strComments)
 
                    //notifyComment.getComment(strComments)
