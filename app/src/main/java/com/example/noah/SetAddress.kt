@@ -38,10 +38,10 @@ class SetAddress : AppCompatActivity() {
             if (result.data != null) {
                 val data = result.data!!.getStringExtra("data")
                 mEtAddress.setText(data)
-                Log.d("getAdress", "getAdress: $data")
 
-//                val intentMap = Intent()
-//                intentMap.putExtra("address", data)
+                val intentMap = Intent()
+                intentMap.putExtra("address", data)
+                Log.d("getAddress", "getAddress: $data")
 //                setResult(Activity.RESULT_OK, intentMap)
 //                finish()
 //                startActivity(intentMap)
