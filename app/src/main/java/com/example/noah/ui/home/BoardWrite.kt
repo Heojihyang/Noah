@@ -26,8 +26,8 @@ class BoardWrite() : Fragment() {
     lateinit var registButton: Button
     lateinit var sqlitedb:SQLiteDatabase
 
-    var user_id: Long = 0
-    var id:Long=0
+    var user_id: Long = 0 //회원 번호
+    var board_id:Long=0 //글 id
 
 
     @SuppressLint("MissingInflatedId")
@@ -42,8 +42,6 @@ class BoardWrite() : Fragment() {
         writeContentsEdit = view.findViewById(R.id.contents_edit)
         registButton = view.findViewById(R.id.regist_button)
 
-        val boardDbManager = DBManager(requireContext())
-
         //회원번호 가져오기
         if (AuthApiClient.instance.hasToken()) {
             UserApiClient.instance.me { user, error ->
@@ -51,27 +49,24 @@ class BoardWrite() : Fragment() {
                 Log.d("login_o", user_id.toString())
             }
         }
-
+        val boardDbManager = DBManager(requireContext())
         //등록 버튼 클릭
         registButton.setOnClickListener {
 
             //board_id값 랜덤으로 지정
             val random = (1..1000).random()
-            id= random.toLong()
+            board_id= random.toLong()
 
             //에디트 텍스트의 Title, contents 받기
             val strTitle = writeTitleEdit.text.toString().trim()
             val strContents = writeContentsEdit.text.toString().trim()
 
 
-
-            Log.d("login_o", user_id.toString())
             sqlitedb=boardDbManager.writableDatabase
             if (strTitle.isNotEmpty() && strContents.isNotEmpty()) {
-                // 데이터 삽입
-                sqlitedb.execSQL("INSERT INTO board VALUES('"+id+"','"+user_id+"','"+strTitle+"','"+strContents+"');")
+                // 글 id, 회원번호, 글 제목, 글 내용 데이터 삽입
+                sqlitedb.execSQL("INSERT INTO board VALUES('"+board_id+"','"+user_id+"','"+strTitle+"','"+strContents+"');")
                 Toast.makeText(context, "등록 완료", Toast.LENGTH_SHORT).show()
-                Log.d("Write",user_id.toString())
 
             } else {
                 Toast.makeText(context, "글을 입력하세요.", Toast.LENGTH_SHORT).show()

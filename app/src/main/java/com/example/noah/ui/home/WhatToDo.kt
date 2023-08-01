@@ -37,10 +37,10 @@ class WhatToDo : Fragment(R.layout.fragment_what_to_do) {
         binding = FragmentWhatToDoBinding.inflate(inflater, container, false)
         val view = binding?.root
 
-
+        //국민 재난 안전 포털 레이아웃 클릭
         binding?.portalSiteLayout?.setOnClickListener {
             onClickPortalSite()
-        }//국민 재난 안전 포털 레이아웃 클릭
+        }
 
         //지진 레이아웃 펼치기 버튼 클릭시
         binding!!.imgMoreEarthquake.setOnClickListener {
@@ -96,11 +96,12 @@ class WhatToDo : Fragment(R.layout.fragment_what_to_do) {
         super.onViewCreated(view, savedInstanceState)
     }
 
+    //국민 재난 안전 포털 레이아웃 클릭 함수
     fun onClickPortalSite() {
         Log.i("whatTodo", "onClickPortalSite")
         Toast.makeText(context, "국민 재난 안전 포털", Toast.LENGTH_SHORT).show()
         //웹 페이지 열기 위한 intent
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.safekorea.go.kr/"))
         startActivity(intent)
-    }//국민 재난 안전 포털 레이아웃 클릭 함수
+    }
 }

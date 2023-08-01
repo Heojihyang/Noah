@@ -27,6 +27,7 @@ class CommentAdapter(private val dataList: List<CommentModel>)
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
         val item = dataList[position]
+        //댓글 보여주기
         holder.commentsTextView.text=item.comments
         Log.d("onBindViewHolder",item.comments)
     }

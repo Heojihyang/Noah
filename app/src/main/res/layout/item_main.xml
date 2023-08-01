@@ -27,6 +27,7 @@
             android:text=" 익명 "
 
             />
+        <!--Title-->
         <TextView
             android:id="@+id/item_title_text"
             android:layout_width="wrap_content"
@@ -37,6 +38,7 @@
             android:textStyle="bold"
             android:textColor="@android:color/black"
             />
+        <!--contents-->
         <TextView
             android:id="@+id/item_contents_text"
             android:layout_width="wrap_content"

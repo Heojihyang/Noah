@@ -43,19 +43,21 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //글쓰기 화면으로 전환
         val writeButton = view.findViewById<Button>(R.id.main_write_button)
         writeButton.setOnClickListener {
-            //글쓰기 화면으로 전환
             findNavController().navigate(R.id.navigation_boardWrite)
         }
+
+        //조치사항 화면으로 전환
         val whatToDoButton = view.findViewById<Button>(R.id.home_button_action)
         whatToDoButton.setOnClickListener {
-            //조치사항 화면으로 전환
             findNavController().navigate(R.id.navigation_whatToDo)
         }
+
+        //내 정보 화면으로 전환
         val myButton = view.findViewById<Button>(R.id.main_My_button)
         myButton.setOnClickListener {
-            //내 정보 화면으로 전환
             findNavController().navigate(R.id.navigation_my_profile)
         }
 
@@ -68,11 +70,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         cursor=sqliteDB.rawQuery("SELECT * FROM board;",null)
         dataList.clear()
         while(cursor.moveToNext()) {
-            val id=cursor.getLong(cursor.getColumnIndex("id"))
+            val userId=cursor.getLong(cursor.getColumnIndex("id"))
+            val boardId=cursor.getLong(cursor.getColumnIndex("id"))
             val title = cursor.getString(cursor.getColumnIndex("title")).toString()
             val contents = cursor.getString(cursor.getColumnIndex("contents")).toString()
 
-            dataList.add(HomeViewModel(id,title, contents))
+            dataList.add(HomeViewModel(userId,boardId,title, contents))
             Log.d("dataList", dataList.toString())
         }
 
@@ -90,15 +93,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 val itmeTitle=clickedItem.title
                 val itemId=clickedItem.id
                 val itemContents=clickedItem.contents
-                //val intent=Intent(context,Comment::class.java)
+                val itemUserId=clickedItem.user_id
+
                 var fragment:Fragment=Comment()
+
+                //bundle에 넣기
                 var bundle:Bundle=Bundle()
                 if (itemId != null) {
                     bundle.putLong("itemId",itemId)
                 }
                 bundle.putString("itemTitle",itmeTitle)
                 bundle.putString("itemContents",itemContents)
-                //fragment.arguments=bundle
+                bundle.putLong("itemUserId",itemUserId)
 
                 mActivity.fragmentChange_for_adapter(fragment)
                 Log.d("setItemClickListener","클릭 됨")
@@ -106,8 +112,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
             }
         })
-
-        //adapter.notifyDataSetChanged()
 
         recyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,true)
         recyclerView.adapter = adapter

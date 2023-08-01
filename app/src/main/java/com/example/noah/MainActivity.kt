@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                     // 토큰 유효성 체크 성공(필요 시 토큰 갱신됨) -> 홈 화면으로 이동
                     val manager:FragmentManager=supportFragmentManager
                     val transaction:FragmentTransaction=manager.beginTransaction()
-                    transaction.replace(R.id.frameLayout, DashboardFragment()).commit()
+                    transaction.replace(R.id.frameLayout, HomeFragment()).commit()
                 }
             }
         } else {
