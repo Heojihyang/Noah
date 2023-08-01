@@ -2,6 +2,7 @@ package com.example.noah
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -9,12 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class SetAddress : AppCompatActivity() {
-      lateinit var mEtAddress: EditText
+    lateinit var mEtAddress: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_address)
-
+        Log.d("intentAdd", "onCreate: SetAddress")
         mEtAddress = findViewById(R.id.et_address)
 
         //block touch
@@ -24,6 +25,7 @@ class SetAddress : AppCompatActivity() {
             val intent = Intent(this@SetAddress, SearchRoadActivity::class.java)
             getSearchResult.launch(intent)
         }
+
 
     }
 
@@ -35,6 +37,13 @@ class SetAddress : AppCompatActivity() {
             if (result.data != null) {
                 val data = result.data!!.getStringExtra("data")
                 mEtAddress.setText(data)
+                Log.d("getAdress", "getAdress: $data")
+
+//                val intentMap = Intent()
+//                intentMap.putExtra("address", data)
+//                setResult(Activity.RESULT_OK, intentMap)
+//                finish()
+//                startActivity(intentMap)
             }
         }
     }

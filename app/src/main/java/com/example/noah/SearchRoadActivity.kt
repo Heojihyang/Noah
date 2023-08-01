@@ -23,7 +23,6 @@ class SearchRoadActivity : AppCompatActivity() {
         bridgeActivity = this
         webView.addJavascriptInterface(BridgeInterface(), "Android")
 
-//        webView.addJavascriptInterface(BridgeInterface(), "Android")
         webView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 //Android->Javascript 함수 호출
@@ -40,9 +39,9 @@ class SearchRoadActivity : AppCompatActivity() {
         @JavascriptInterface
         fun processDATA(data: String) {
             //다음(카카오) 주소 검색 API의 결과 값이 브릿지 통로를 통해 전달
-            val intent = Intent()
-            intent.putExtra("data", data)
-            setResult(Activity.RESULT_OK, intent)
+            val intentAddress = Intent()
+            intentAddress.putExtra("data", data)
+            setResult(Activity.RESULT_OK, intentAddress)
             finish()
         }
     }

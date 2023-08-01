@@ -75,7 +75,7 @@ class MyProfile : AppCompatActivity() {
 
             val intent = Intent(this, SetAddress::class.java)
             startActivity(intent)
-
+            Log.d("intentAdd", "SetAddress intent 실행")
         }
     }
 
