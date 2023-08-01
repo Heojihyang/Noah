@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".SearchRoadActivity">
 
+    <!-- 웹뷰를 감싸는 부모 레이아웃으로 FrameLayout을 사용합니다. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <WebView
         android:id="@+id/webView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

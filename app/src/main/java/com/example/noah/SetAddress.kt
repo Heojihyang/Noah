@@ -3,6 +3,7 @@ package com.example.noah
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.EditText
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -11,11 +12,12 @@ import androidx.appcompat.app.AppCompatActivity
 
 class SetAddress : AppCompatActivity() {
     lateinit var mEtAddress: EditText
+    lateinit var button_setAddress: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_address)
-        Log.d("intentAdd", "onCreate: SetAddress")
+
         mEtAddress = findViewById(R.id.et_address)
 
         //block touch
@@ -25,7 +27,6 @@ class SetAddress : AppCompatActivity() {
             val intent = Intent(this@SetAddress, SearchRoadActivity::class.java)
             getSearchResult.launch(intent)
         }
-
 
     }
 

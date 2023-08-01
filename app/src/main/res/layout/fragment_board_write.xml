@@ -7,12 +7,6 @@
     android:background="@color/gray1"
     android:orientation="vertical"
     tools:context=".ui.home.BoardWrite">
-    <!--로그인 기능 추가 전 식별값 임시로 받아오려고 만듦-->
-    <EditText
-        android:id="@+id/id_edit_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="id 값 임시로 받아옴" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -81,19 +75,6 @@
 
 
         </LinearLayout>
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/image_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="30dp"
-            android:layout_marginVertical="10dp"
-            android:clickable="true"
-            android:src="@drawable/ic_image"
-            app:borderWidth="1dp"
-            app:tint="@color/yellow"
-            android:backgroundTint="@color/white"
-            app:backgroundTint="@color/yellow"/>
 
 
 

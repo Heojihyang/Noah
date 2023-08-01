@@ -1,5 +1,6 @@
 package com.example.noah.ui.home
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +12,7 @@ class CommentAdapter(private val dataList: List<CommentModel>)
     : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>(){
 
     inner class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val commentsTextView: TextView = itemView.findViewById(R.id.item_comments_text)
-
-        fun bind(item:CommentModel){
-            commentsTextView.text=item.comments
-        }
+        val commentsTextView: TextView = itemView.findViewById(R.id.item_comments_text)
 
     }
 
@@ -30,7 +27,8 @@ class CommentAdapter(private val dataList: List<CommentModel>)
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
         val item = dataList[position]
-        holder.bind(item)
+        holder.commentsTextView.text=item.comments
+        Log.d("onBindViewHolder",item.comments)
     }
 
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="30dp" /> <!-- 버튼의 모서리 반지름을 조절하여 둥글게 만듭니다. -->
+            <solid android:color="@color/yellow_pressed" /> <!-- 버튼의 배경색을 설정합니다. -->
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="30dp" /> <!-- 버튼의 모서리 반지름을 조절하여 둥글게 만듭니다. -->
+            <solid android:color="@color/black" /> <!-- 버튼의 배경색을 설정합니다. -->
+        </shape>
+    </item>
+</selector>
